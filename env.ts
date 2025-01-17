@@ -5,7 +5,7 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     DATABASE_URL: z.string(),
-    PGLITE: z.coerce.boolean().optional().default(false),
+    PGLITE: z.coerce.boolean(),
     NODE_ENV: z.union([
       z.literal("development"),
       z.literal("production"),

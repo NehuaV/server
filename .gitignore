@@ -43,3 +43,6 @@ package-lock.json
 
 # Database
 .db
+
+# dist
+dist

@@ -8,10 +8,7 @@ export const dbConfig: DrizzleConfig = {
 };
 
 export const connection = env.PGLITE
-  ? process.env.NODE_ENV === "test" || process.env.NODE_ENV === "development"
-    ? // in-memory database for tests
-      {}
-    : { dataDir: "./.db" }
+  ? { dataDir: "./.db" }
   : {
       connectionString: env.DATABASE_URL,
       connectionTimeoutMillis: 10000,
