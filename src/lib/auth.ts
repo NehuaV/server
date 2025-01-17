@@ -1,8 +1,7 @@
 import { betterAuth } from "better-auth";
-import { APIError } from "better-auth/api";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { db } from "@/db/db";
-import * as authSchema from "@/db/schema/auth-schema";
+import { db } from "@/lib/db";
+import { users, sessions, accounts, verifications } from "@/schema/auth-schema";
 
 export const auth = betterAuth({
   baseURL: "http://localhost:4000",
@@ -11,10 +10,13 @@ export const auth = betterAuth({
     usePlural: true,
     provider: "pg",
     schema: {
-      ...authSchema,
+      users,
+      sessions,
+      accounts,
+      verifications,
     },
   }),
-  plugins: [],
+  // plugins: [],
   emailAndPassword: {
     enabled: true,
     autoSignIn: true,

@@ -5,6 +5,8 @@ import {
   timestamp,
   boolean,
 } from "drizzle-orm/pg-core";
+import { kanban } from "./kanban";
+import { relations } from "drizzle-orm";
 
 export const users = pgTable("users", {
   id: text("id").primaryKey(),
@@ -15,6 +17,10 @@ export const users = pgTable("users", {
   createdAt: timestamp("createdAt").notNull(),
   updatedAt: timestamp("updatedAt").notNull(),
 });
+
+export const usersRelations = relations(users, ({ many }) => ({
+  kanban: many(kanban),
+}));
 
 export const sessions = pgTable("sessions", {
   id: text("id").primaryKey(),

@@ -1,5 +1,6 @@
-import { Elysia, type Context } from "elysia";
-import { auth } from "../libs/auth";
+import type { Context } from "elysia";
+import { auth } from "../lib/auth";
+import type { App } from "@/app";
 
 const betterAuthView = (context: Context) => {
   const BETTER_AUTH_ACCEPT_METHODS = ["POST", "GET"];
@@ -11,4 +12,4 @@ const betterAuthView = (context: Context) => {
   context.error(405);
 };
 
-export const authService = new Elysia().all("/api/auth/*", betterAuthView);
+export const authService = (app: App) => app.all("/auth/*", betterAuthView);
