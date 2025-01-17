@@ -5,7 +5,10 @@ export const successResponse = t.Object({
   data: t.Any(),
 });
 
-export const errorResponse = t.String({ default: "Error" });
+export const errorResponse = t.Object({
+  error: t.String(),
+  message: t.String(),
+});
 
 export const commonResponses = {
   200: successResponse,

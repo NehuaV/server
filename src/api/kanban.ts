@@ -19,7 +19,12 @@ export const kanbanRoutes = (app: App) =>
     .get(
       "/kanban",
       async ({ user, error }) => {
-        if (!user) return error(401, "Unauthorized");
+        if (!user) {
+          return error(401, {
+            error: "unauthorized",
+            message: "Unauthorized",
+          });
+        }
 
         const data = await db
           .select()
@@ -41,7 +46,12 @@ export const kanbanRoutes = (app: App) =>
     .post(
       "/kanban",
       async ({ user, body, error }) => {
-        if (!user) return error(401, "Unauthorized");
+        if (!user) {
+          return error(401, {
+            error: "unauthorized",
+            message: "Unauthorized",
+          });
+        }
 
         const data = await db.insert(kanban).values({
           userId: user.id,
