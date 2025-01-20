@@ -1,12 +1,12 @@
 import { describe, expect, it } from "bun:test";
 import { treaty } from "@elysiajs/eden";
-import { app } from "@/app";
+import { server } from "@/index";
 
-const server = treaty(app);
+const s = treaty(server);
 
 describe("Elysia", () => {
   it("return a response", async () => {
-    const { data, error } = await server.api.helloworld.get();
+    const { data, error } = await s.api.helloworld.get();
 
     expect(data).toEqual({
       message: "Hello World",
