@@ -1,5 +1,5 @@
 import { defineConfig } from "drizzle-kit";
-import { env } from "./env";
+import { env } from "@/env";
 
 const extendConfig = env.PGLITE ? { driver: "pglite" } : {};
 

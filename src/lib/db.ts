@@ -1,6 +1,6 @@
 import { drizzle as pgDrizzle } from "drizzle-orm/node-postgres";
 import { drizzle as pgliteDrizzle } from "drizzle-orm/pglite";
-import { env } from "../../env";
+import { env } from "@/env";
 import { type DrizzleConfig, sql } from "drizzle-orm";
 
 export const dbConfig: DrizzleConfig = {

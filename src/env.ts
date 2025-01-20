@@ -1,4 +1,3 @@
-// @ts-expect-error weird type error
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
 
@@ -11,6 +10,9 @@ export const env = createEnv({
       z.literal("production"),
       z.literal("test"),
     ]),
+    BASE_URL: z.string(),
+    SECRET: z.string(),
+    FE_URL: z.string(),
     PORT: z.string().optional().default("4000"),
   },
   runtimeEnv: process.env,
